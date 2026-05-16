@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+    <!-- Vista formulario para carrier.carrier_query -->
+    <record model="ir.ui.view" id="transportistas.carrier_query_form">
+        <field name="name">transportistas.carrier_query</field>
+        <field name="model">transportistas.carrier_query</field>
+        <field name="arch" type="xml">
+            <form string="Carrier Query">
+                <group colspan="2" class="oe_inline">
+                    <group>
+                        <field name="country"/>
+                        <field name="ship_city"/>
+                        <field name="province_state"/>
+                        <field name="cp"/>
+                    </group>
+                    <group>
+                        <field name="weight"/>
+                        <field name="broad"/>
+                        <field name="long"/>
+                        <field name="alp" readonly="1"/>
+                    </group>
+                </group>
+
+                <group>
+                    <button name="toggle_show_prices"
+                            type="object"
+                            string="Show/Hide Prices"
+                            class="btn-primary"
+                            icon="fa-money"/>
+                    <field name="show_prices" invisible="1"/>
+                </group>
+
+                <group attrs="{'invisible': [('show_prices', '=', False)]}">
+                    <field name="list_carriers">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="price"/>
+                        </tree>
+                    </field>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción -->
+    <record model="ir.actions.act_window" id="transportistas.action_window">
+        <field name="name">Carrier Query</field>
+        <field name="res_model">transportistas.carrier_query</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <!-- Menú -->
+    <menuitem name="Carriers" id="transportistas.menu_root"/>
+    <menuitem name="Carrier Query" id="transportistas.menu_query" parent="transportistas.menu_root" action="transportistas.action_window"/>
+  </data>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_transportistas_carrier_query,transportistas.carrier_query,model_transportistas_carrier_query,base.group_user,1,1,1,1
+access_transportistas_carriers,transportistas.carriers,model_transportistas_carriers,base.group_user,1,1,1,1
